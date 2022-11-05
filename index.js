@@ -1,3 +1,32 @@
+function setGroup(arrSubroute, arrStage, obj ){
+  var group = [];
+  for(i = 0; i < obj.arrayOfStop.length-1; i++){
+      var start = obj.arrayOfStop[i]
+     //console.log(start)
+      var end = obj.arrayOfStop[i+1]
+      //console.log(end)
+      for(j = 0; j< stage.length;j++){
+        var g = stage[j]
+        if(g.idStart == start){
+          if(g.idEnd == end){
+             
+            group.push(g.coordTop)
+          }
+        }
+    
+      }
+    }
+
+  return group
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 let sTop = [
   {
      idStop: "5",
@@ -5662,10 +5691,8 @@ let stage = [
 ]
 var map = L.map('map', {
   center:  [56.870961, 53.180364],
-  zoom: 13
+  zoom: 14
 });
-var marker19_0 = []
-var marker19_1 = []
 var osmLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
   attribution: '©OpenStreetMap, ©CartoDB'
 }).addTo(map);
@@ -5705,7 +5732,7 @@ for(i = 0; i < sTop.length; i++){
 }
 
 //Инициализация массивов под координаты остановок конкретных маршрутов
-var group19_0 = []
+/*var group19_0 = []
 var group19_1 = []
 var group74_0 = []
 var group74_1 = []
@@ -5715,276 +5742,48 @@ var group84_0 = []
 var group84_1 = []
 var group87_0 = []
 var group87_1 = []
+*/
+var groupPolyline = []
+groupPolyline.length = 10
 
-//Циклы для нахождения координат остановок на маршруте
-/*for(i = 0; i < subroute[0].arrayOfStop.length; i++) { 
-  var idOfStop = subroute[0].arrayOfStop[i]
-  let a = sTop.find(item => item.idStop == idOfStop) 
-  group19_0.push([a.latitude, a.longitude])
-  var marker = L.marker(L.latLng(group19_0[i]), {title: title1, icon: icon_this, opacity: 1}).bindPopup(title1)
-  marker19_0.push(marker)
+for(q = 0; q < groupPolyline.length; q++){
+  let obj = subroute[q]
+  groupPolyline[q] = setGroup(subroute, stage,obj)
+  console.log(groupPolyline)
 }
-  console.log(marker19_0)
-for(i = 0; i < subroute[1].arrayOfStop.length; i++) { 
-  var idOfStop = subroute[1].arrayOfStop[i]
-  let a = sTop.find(item => item.idStop == idOfStop)
-  group19_1.push([a.latitude, a.longitude])
-  var marker = L.marker(L.latLng(group19_1[i]), {title: title1, icon: icon_this, opacity: 1}).bindPopup(title1)
-  marker19_1.push(marker)
-}*/
+/*let obj0 = subroute[0]
+group19_0 = setGroup(subroute, stage,obj0)
+let obj1 = subroute[1]
+group19_1 = setGroup(subroute, stage,obj1)
+let obj2 = subroute[2]
+group74_0 = setGroup(subroute, stage,obj2)
+let obj3 = subroute[3]
+group74_1 = setGroup(subroute, stage,obj3)
+let obj4 = subroute[4]
+group78_0 = setGroup(subroute, stage,obj4)
+let obj5 = subroute[5]
+group78_1 = setGroup(subroute, stage,obj5)
+let obj6 = subroute[6]
+group84_0 = setGroup(subroute, stage,obj6)
+let obj7 = subroute[7]
+group84_1 = setGroup(subroute, stage,obj7)
+let obj8 = subroute[8]
+group87_0 = setGroup(subroute, stage,obj8)
+let obj9 = subroute[9]
+group87_1 = setGroup(subroute, stage,obj9)*/
+console.log(groupPolyline)
+var poliline19_0 = L.polyline(groupPolyline[0],{color:"red"})
+var poliline19_1 = L.polyline(groupPolyline[1],{color:"black"})
+var poliline74_0 = L.polyline(groupPolyline[2],{color:"yellow"})
+var poliline74_1 = L.polyline(groupPolyline[3],{color:"blue"})
+var poliline78_0 = L.polyline(groupPolyline[4],{color:"green"})
+var poliline78_1 = L.polyline(groupPolyline[5],{color:"violet"})
+var poliline84_0 = L.polyline(groupPolyline[6],{color:"orange"})
+var poliline84_1 = L.polyline(groupPolyline[7],{color:"pink"})
+var poliline87_0 = L.polyline(groupPolyline[8],{color:"brown"})
+var poliline87_1 = L.polyline(groupPolyline[9],{color:"grey"})
 
-
-var ob = subroute[0]
-//Цикл для нахождение и отрисовки 19 маршрута направление -1
-for(i = 0; i < subroute[0].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        console.log(g)  
-        group19_0.push(g.coordTop)
-      }
-    }
-
-  }
-}
-
-var ob = subroute[1]
-//Цикл для нахождение и отрисовки 19 маршрута направление 1
-for(i = 0; i < subroute[1].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group19_1.push(g.coordTop)
-      }
-    }
-
-  }
-}
-
-//Цикл для нахождение и отрисовки 74 маршрута направление -1
-var ob = subroute[2]
-for(i = 0; i < subroute[2].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group74_0.push(g.coordTop)
-      }
-    }
-
-  }
-}
-
-//Цикл для нахождение и отрисовки 74 маршрута направление 1
-var ob = subroute[3]
-for(i = 0; i < subroute[3].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group74_1.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Цикл для нахождение и отрисовки 78 маршрута направление -1
-var ob = subroute[4]
-for(i = 0; i < subroute[4].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group78_0.push(g.coordTop)
-      }
-    }
-
-  }
-}
-
-//Цикл для нахождение и отрисовки 78 маршрута направление 1
-var ob = subroute[5]
-for(i = 0; i < subroute[5].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group78_1.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Цикл для нахождение и отрисовки 84 маршрута направление -1
-var ob = subroute[6]
-for(i = 0; i < subroute[6].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group84_0.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Цикл для нахождение и отрисовки 84 маршрута направление 1
-var ob = subroute[7]
-for(i = 0; i < subroute[7].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group84_1.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Цикл для нахождение и отрисовки 87 маршрута направление -1
-var ob = subroute[8]
-for(i = 0; i < subroute[8].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group87_0.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Цикл для нахождение и отрисовки 87 маршрута направление 1
-var ob = subroute[9]
-for(i = 0; i < subroute[9].arrayOfStop.length-1; i++){
-  var start = ob.arrayOfStop[i]
-  //console.log(start)
-  var end = ob.arrayOfStop[i+1]
-  //console.log(end)
-  for(j = 0; j< stage.length;j++){
-    var g = stage[j]
-    if(g.idStart == start){
-      if(g.idEnd == end){
-        //console.log(g)  
-        group84_1.push(g.coordTop)
-      }
-    }
-
-  }
-}
-//Полилиния 19 -1
-for(h = 0; h < group19_0.length; h++){
-  let set = group19_0[h]
-  marker19_0[h] = L.marker(set, {opacity: 1, icon : myIconBus})
-  var poliline = L.polyline(set,marker,{color:"red"})
-}
-//Полилиния 19 1
-for(h = 0; h < group19_1.length; h++){
-  let set = group19_1[h]
-  marker19_1[h] = L.marker(set, {opacity: 1, icon : myIconBus})
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 74 -1
-for(h = 0; h < group74_0.length; h++){
-  let set = group74_0[h]
-  marker19_1[h] = L.marker(set, {opacity: 1, icon : myIconBus})
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 74 1
-for(h = 0; h < group74_0.length; h++){
-  let set = group74_0[h]
-  marker19_1[h] = L.marker(set, {opacity: 1, icon : myIconBus})
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 78 -1
-for(h = 0; h < group78_0.length; h++){
-  let set = group78_0[h]
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 78 1
-for(h = 0; h < group78_1.length; h++){
-  let set = group78_1[h]
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 84 -1
-for(h = 0; h < group84_0.length; h++){
-  let set = group84_0[h]
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 84 1
-for(h = 0; h < group84_1.length; h++){
-  let set = group84_1[h]
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 87 -1
-for(h = 0; h < group87_0.length; h++){
-  let set = group87_0[h]
-  var pol = L.polyline(set,{color:"red"})
-}
-//Полилиния 87 1
-for(h = 0; h < group87_1.length; h++){
-  let set = group87_1 [h]
-  var pol = L.polyline(set,{color:"red"})
-}
-
-var poliline19_0 = L.polyline(group19_0,{color:"red"}).addTo(map)
-var poliline19_1 = L.polyline(group19_1,{color:"black"}).addTo(map)
-var poliline74_0= L.polyline(group74_0,{color:"yellow"}).addTo(map)
-var poliline74_1 = L.polyline(group74_1,{color:"blue"}).addTo(map)
-var poliline78_0= L.polyline(group78_0,{color:"green"}).addTo(map)
-var poliline78_1 = L.polyline(group78_1,{color:"violet"}).addTo(map)
-var poliline84_0= L.polyline(group84_0,{color:"orange"}).addTo(map)
-var poliline84_1 = L.polyline(group84_1,{color:"pink"}).addTo(map)
-var poliline87_0= L.polyline(group87_0,{color:"brown"}).addTo(map)
-var poliline87_1 = L.polyline(group87_1,{color:"grey"}).addTo(map)
-
-var layersgrope = L.layerGroup([poliline19_0]).addTo(map)
+var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
 var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
 var layersgrope2 = L.layerGroup([poliline74_0]).addTo(map)
 var layersgrope3 = L.layerGroup([poliline74_1]).addTo(map)
@@ -5997,7 +5796,7 @@ var layersgrope9 = L.layerGroup([poliline87_1]).addTo(map)
 
 //console.log(layersgrope)
 L.control.layers(baseMaps, {
-  '19 автобус направление -1': layersgrope,
+  '19 автобус направление -1': layersgrope0,
   '19 автобус направление 1': layersgrope1,
   '6 троллейбус направление -1': layersgrope2,
   '6 троллейбус направление 1': layersgrope3,
