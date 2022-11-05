@@ -19,14 +19,6 @@ function setGroup(arrSubroute, arrStage, obj ){
 
   return group
 }
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
 let sTop = [
   {
      idStop: "5",
@@ -5731,8 +5723,6 @@ for(i = 0; i < sTop.length; i++){
 
 }
 
-//Инициализация массивов под координаты остановок конкретных маршрутов
-/*var group19_0 = []
 var group19_1 = []
 var group74_0 = []
 var group74_1 = []
@@ -5742,7 +5732,7 @@ var group84_0 = []
 var group84_1 = []
 var group87_0 = []
 var group87_1 = []
-*/
+
 var groupPolyline = []
 groupPolyline.length = 10
 
@@ -5751,26 +5741,6 @@ for(q = 0; q < groupPolyline.length; q++){
   groupPolyline[q] = setGroup(subroute, stage,obj)
   console.log(groupPolyline)
 }
-/*let obj0 = subroute[0]
-group19_0 = setGroup(subroute, stage,obj0)
-let obj1 = subroute[1]
-group19_1 = setGroup(subroute, stage,obj1)
-let obj2 = subroute[2]
-group74_0 = setGroup(subroute, stage,obj2)
-let obj3 = subroute[3]
-group74_1 = setGroup(subroute, stage,obj3)
-let obj4 = subroute[4]
-group78_0 = setGroup(subroute, stage,obj4)
-let obj5 = subroute[5]
-group78_1 = setGroup(subroute, stage,obj5)
-let obj6 = subroute[6]
-group84_0 = setGroup(subroute, stage,obj6)
-let obj7 = subroute[7]
-group84_1 = setGroup(subroute, stage,obj7)
-let obj8 = subroute[8]
-group87_0 = setGroup(subroute, stage,obj8)
-let obj9 = subroute[9]
-group87_1 = setGroup(subroute, stage,obj9)*/
 console.log(groupPolyline)
 var poliline19_0 = L.polyline(groupPolyline[0],{color:"red"})
 var poliline19_1 = L.polyline(groupPolyline[1],{color:"black"})
