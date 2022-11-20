@@ -2,9 +2,7 @@ function setGroup(arrSubroute, arrStage, obj ){
   var group = [];
   for(i = 0; i < obj.arrayOfStop.length-1; i++){
       var start = obj.arrayOfStop[i]
-     //console.log(start)
       var end = obj.arrayOfStop[i+1]
-      //console.log(end)
       for(j = 0; j< stage.length;j++){
         var g = stage[j]
         if(g.idStart == start){
@@ -13,11 +11,32 @@ function setGroup(arrSubroute, arrStage, obj ){
             group.push(g.coordTop)
           }
         }
-    
       }
     }
 
   return group
+}
+function simulate() {
+  var duration= 1100;
+  point = drivePath.shift()
+  point1 = drivePath[1]
+ // m.setRotationAngle(alfa(point, point1))
+  if(!drivePath.length) {
+    drivePath= marsh.slice(1);
+    duration= 0;
+  }
+  m.slideTo([point[0], point[1]], {
+      duration: duration,
+      rotationAngle: alfa(point, point1)
+  })
+  //var angle1 = alfa(point, point1)
+  console.log(alfa(point, point1))
+  setTimeout(simulate, 1000);
+  
+}
+function alfa(point, point1, angle1){
+ var angle = Math.atan2(point1[1]-point[1], point1[0]-point[0])
+ return angle * (180/Math.PI);
 }
 let sTop = [
   {
@@ -5713,13 +5732,14 @@ for(i = 0; i < sTop.length; i++){
 
   var a = sTop[i];
   var title1 = a.fullNameStop;
+  var idOfStop = a.idStop
   if (a.type == 2)
     var icon_this = myIconBus
    
   else
     icon_this = myIconTram
 
-  var marker = L.marker(L.latLng(a.latitude,a.longitude), {title: title1, icon: icon_this, opacity: 0.05}).bindPopup(title1).addTo(map)
+  var marker = L.marker(L.latLng(a.latitude,a.longitude), {title: title1, icon: icon_this, opacity: 0.5}).bindPopup(title1).addTo(map)
 
 }
 
@@ -5739,9 +5759,8 @@ groupPolyline.length = 10
 for(q = 0; q < groupPolyline.length; q++){
   let obj = subroute[q]
   groupPolyline[q] = setGroup(subroute, stage,obj)
-  console.log(groupPolyline)
 }
-console.log(groupPolyline)
+
 var poliline19_0 = L.polyline(groupPolyline[0],{color:"red"})
 var poliline19_1 = L.polyline(groupPolyline[1],{color:"black"})
 var poliline74_0 = L.polyline(groupPolyline[2],{color:"yellow"})
@@ -5754,8 +5773,8 @@ var poliline87_0 = L.polyline(groupPolyline[8],{color:"brown"})
 var poliline87_1 = L.polyline(groupPolyline[9],{color:"grey"})
 
 var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
-var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
-var layersgrope2 = L.layerGroup([poliline74_0]).addTo(map)
+//var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
+/*var layersgrope2 = L.layerGroup([poliline74_0]).addTo(map)
 var layersgrope3 = L.layerGroup([poliline74_1]).addTo(map)
 var layersgrope4 = L.layerGroup([poliline78_0]).addTo(map)
 var layersgrope5 = L.layerGroup([poliline78_1]).addTo(map)
@@ -5763,12 +5782,13 @@ var layersgrope6 = L.layerGroup([poliline84_0]).addTo(map)
 var layersgrope7 = L.layerGroup([poliline84_1]).addTo(map)
 var layersgrope8 = L.layerGroup([poliline87_0]).addTo(map)
 var layersgrope9 = L.layerGroup([poliline87_1]).addTo(map)
+*/
 
-//console.log(layersgrope)
+
 L.control.layers(baseMaps, {
-  '19 автобус направление -1': layersgrope0,
-  '19 автобус направление 1': layersgrope1,
-  '6 троллейбус направление -1': layersgrope2,
+  '19 автобус направление -1': layersgrope0
+  //'19 автобус направление 1': layersgrope1,
+  /*'6 троллейбус направление -1': layersgrope2,
   '6 троллейбус направление 1': layersgrope3,
   '14 троллейбус направление -1': layersgrope4,
   '14 троллейбус направление 1': layersgrope5,
@@ -5776,4 +5796,34 @@ L.control.layers(baseMaps, {
   '7 трамвай направление 1': layersgrope7,
   '10 трамвай направление -1': layersgrope8,
   '10 трамвай направление 1': layersgrope9
+  */
 }).addTo(map)
+var temp = groupPolyline[0][0][0]
+var marshrut = groupPolyline[0]
+console.log(marshrut)
+var m = L.marker([temp[0],temp[1]], {
+  icon: new L.icon({
+    iconUrl: "ico.png",
+    iconSize: [40,40],
+    iconAnchor: [20,20]
+  })  
+}).addTo(map)
+
+var marsh = []
+let p = 0
+for(i = 0; i < marshrut.length; i++){
+  for(k = 0; k < marshrut[i].length; k++){
+    for(j = 0; j < marshrut[i][k].length; j++){
+      marsh[p] = marshrut[i][k]
+      p++;
+    }
+
+  }
+
+}
+
+console.log(marsh)
+var drivePath= marsh.slice(1)
+var point = drivePath.shift();
+
+simulate();
