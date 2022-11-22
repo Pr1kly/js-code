@@ -16,27 +16,480 @@ function setGroup(arrSubroute, arrStage, obj ){
 
   return group
 }
-function simulate() {
-  var duration= 1100;
-  point = drivePath.shift()
-  point1 = drivePath[1]
- // m.setRotationAngle(alfa(point, point1))
-  if(!drivePath.length) {
-    drivePath= marsh.slice(1);
-    duration= 0;
-  }
-  m.slideTo([point[0], point[1]], {
-      duration: duration,
-      rotationAngle: alfa(point, point1)
-  })
-  //var angle1 = alfa(point, point1)
-  console.log(alfa(point, point1))
-  setTimeout(simulate, 1000);
-  
-}
+
 function alfa(point, point1, angle1){
  var angle = Math.atan2(point1[1]-point[1], point1[0]-point[0])
  return angle * (180/Math.PI);
+}
+function Marsh_19_0(){
+  var temp = groupPolyline[0][0][0]
+var marshrut = groupPolyline[0]
+//console.log(marshrut)
+var m = L.marker([temp[0],temp[1]], {
+  icon: new L.icon({
+    iconUrl: "ico.png",
+    iconSize: [40,40],
+    iconAnchor: [20,20]
+  })  
+}).addTo(map)
+var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
+  var marsh = []
+  let p = 0
+  for(i = 0; i < marshrut.length; i++){
+    for(k = 0; k < marshrut[i].length; k++){
+      for(j = 0; j < marshrut[i][k].length; j++){
+        marsh[p] = marshrut[i][k]
+        p++;
+      }
+    }
+  }
+  var drivePath= marsh.slice(1)
+  console.log(drivePath)
+  function simulate() {
+    var duration= 3000;
+   // m.setRotationAngle(alfa(point, point1))
+    if(!drivePath.length) {
+      drivePath= marsh.slice(1);
+      duration= 0;
+    }
+    point = drivePath.shift()
+    point1 = drivePath[1]
+    console.log(drivePath)
+    m.slideTo([point[0], point[1]], {
+        duration: duration,
+        rotationAngle: alfa(point, point1)
+    })
+    //var angle1 = alfa(point, point1)
+    //console.log(alfa(point, point1))
+   // console.log(drivePath)
+    setTimeout(simulate, 2500);
+    
+  }
+  //var point = drivePath.shift();
+  simulate();
+}
+function Marsh_19_1(){
+var temp = groupPolyline[1][0][0]
+var marshrut = groupPolyline[1]
+//console.log(marshrut)
+var m = L.marker([temp[0],temp[1]], {
+  icon: new L.icon({
+    iconUrl: "ico.png",
+    iconSize: [40,40],
+    iconAnchor: [20,20]
+  })  
+}).addTo(map)
+var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
+  var marsh = []
+  let p = 0
+  for(i = 0; i < marshrut.length; i++){
+    for(k = 0; k < marshrut[i].length; k++){
+      for(j = 0; j < marshrut[i][k].length; j++){
+        marsh[p] = marshrut[i][k]
+        p++;
+      }
+    }
+  }
+  var drivePath= marsh.slice(1)
+  console.log(drivePath)
+  function simulate() {
+    var duration= 3000;
+   // m.setRotationAngle(alfa(point, point1))
+    if(!drivePath.length) {
+      drivePath= marsh.slice(1);
+      duration= 0;
+    }
+    point = drivePath.shift()
+    point1 = drivePath[1]
+    console.log(drivePath)
+    m.slideTo([point[0], point[1]], {
+        duration: duration,
+        rotationAngle: alfa(point, point1)
+    })
+    //var angle1 = alfa(point, point1)
+    //console.log(alfa(point, point1))
+   // console.log(drivePath)
+    setTimeout(simulate, 2500);
+    
+  }
+  //var point = drivePath.shift();
+  simulate();
+}
+function Marsh_74_0(){
+  var temp = groupPolyline[2][0][0]
+  var marshrut = groupPolyline[2]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope2 = L.layerGroup([poliline74_0]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_74_1(){
+  var temp = groupPolyline[3][0][0]
+  var marshrut = groupPolyline[3]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope3 = L.layerGroup([poliline74_1]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_78_0(){
+  var temp = groupPolyline[4][0][0]
+  var marshrut = groupPolyline[4]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope4 = L.layerGroup([poliline78_0]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_78_1(){
+  var temp = groupPolyline[5][0][0]
+  var marshrut = groupPolyline[5]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope5 = L.layerGroup([poliline78_1]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_84_0(){
+  var temp = groupPolyline[6][0][0]
+  var marshrut = groupPolyline[6]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico2.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope6 = L.layerGroup([poliline84_0]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_84_1(){
+  var temp = groupPolyline[7][0][0]
+  var marshrut = groupPolyline[7]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico2.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope7 = L.layerGroup([poliline84_1]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_87_0(){
+  var temp = groupPolyline[8][0][0]
+  var marshrut = groupPolyline[8]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico2.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope8 = L.layerGroup([poliline87_0]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
+}
+function Marsh_87_1(){
+  var temp = groupPolyline[9][0][0]
+  var marshrut = groupPolyline[9]
+  //console.log(marshrut)
+  var m = L.marker([temp[0],temp[1]], {
+    icon: new L.icon({
+      iconUrl: "ico2.png",
+      iconSize: [40,40],
+      iconAnchor: [20,20]
+    })  
+  }).addTo(map)
+  var layersgrope9 = L.layerGroup([poliline87_1]).addTo(map)
+    var marsh = []
+    let p = 0
+    for(i = 0; i < marshrut.length; i++){
+      for(k = 0; k < marshrut[i].length; k++){
+        for(j = 0; j < marshrut[i][k].length; j++){
+          marsh[p] = marshrut[i][k]
+          p++;
+        }
+      }
+    }
+    var drivePath= marsh.slice(1)
+    console.log(drivePath)
+    function simulate() {
+      var duration= 3000;
+     // m.setRotationAngle(alfa(point, point1))
+      if(!drivePath.length) {
+        drivePath= marsh.slice(1);
+        duration= 0;
+      }
+      point = drivePath.shift()
+      point1 = drivePath[1]
+      console.log(drivePath)
+      m.slideTo([point[0], point[1]], {
+          duration: duration,
+          rotationAngle: alfa(point, point1)
+      })
+      //var angle1 = alfa(point, point1)
+      //console.log(alfa(point, point1))
+     // console.log(drivePath)
+      setTimeout(simulate, 2500);
+      
+    }
+    //var point = drivePath.shift();
+    simulate();
 }
 let sTop = [
   {
@@ -5739,7 +6192,7 @@ for(i = 0; i < sTop.length; i++){
   else
     icon_this = myIconTram
 
-  var marker = L.marker(L.latLng(a.latitude,a.longitude), {title: title1, icon: icon_this, opacity: 0.5}).bindPopup(title1).addTo(map)
+  var marker = L.marker(L.latLng(a.latitude,a.longitude), {title: title1, icon: icon_this, opacity: 0.25}).bindPopup(title1).addTo(map)
 
 }
 
@@ -5772,23 +6225,10 @@ var poliline84_1 = L.polyline(groupPolyline[7],{color:"pink"})
 var poliline87_0 = L.polyline(groupPolyline[8],{color:"brown"})
 var poliline87_1 = L.polyline(groupPolyline[9],{color:"grey"})
 
-var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
-//var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
-/*var layersgrope2 = L.layerGroup([poliline74_0]).addTo(map)
-var layersgrope3 = L.layerGroup([poliline74_1]).addTo(map)
-var layersgrope4 = L.layerGroup([poliline78_0]).addTo(map)
-var layersgrope5 = L.layerGroup([poliline78_1]).addTo(map)
-var layersgrope6 = L.layerGroup([poliline84_0]).addTo(map)
-var layersgrope7 = L.layerGroup([poliline84_1]).addTo(map)
-var layersgrope8 = L.layerGroup([poliline87_0]).addTo(map)
-var layersgrope9 = L.layerGroup([poliline87_1]).addTo(map)
-*/
-
-
 L.control.layers(baseMaps, {
-  '19 автобус направление -1': layersgrope0
-  //'19 автобус направление 1': layersgrope1,
-  /*'6 троллейбус направление -1': layersgrope2,
+  '19 автобус направление -1': layersgrope0,
+  '19 автобус направление 1': layersgrope1,
+  '6 троллейбус направление -1': layersgrope2,
   '6 троллейбус направление 1': layersgrope3,
   '14 троллейбус направление -1': layersgrope4,
   '14 троллейбус направление 1': layersgrope5,
@@ -5796,34 +6236,7 @@ L.control.layers(baseMaps, {
   '7 трамвай направление 1': layersgrope7,
   '10 трамвай направление -1': layersgrope8,
   '10 трамвай направление 1': layersgrope9
-  */
-}).addTo(map)
-var temp = groupPolyline[0][0][0]
-var marshrut = groupPolyline[0]
-console.log(marshrut)
-var m = L.marker([temp[0],temp[1]], {
-  icon: new L.icon({
-    iconUrl: "ico.png",
-    iconSize: [40,40],
-    iconAnchor: [20,20]
-  })  
+  
 }).addTo(map)
 
-var marsh = []
-let p = 0
-for(i = 0; i < marshrut.length; i++){
-  for(k = 0; k < marshrut[i].length; k++){
-    for(j = 0; j < marshrut[i][k].length; j++){
-      marsh[p] = marshrut[i][k]
-      p++;
-    }
 
-  }
-
-}
-
-console.log(marsh)
-var drivePath= marsh.slice(1)
-var point = drivePath.shift();
-
-simulate();
