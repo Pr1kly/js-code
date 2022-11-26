@@ -16,7 +16,6 @@ function setGroup(arrSubroute, arrStage, obj ){
 
   return group
 }
-
 function alfa(point, point1, angle1){
  var angle = Math.atan2(point1[1]-point[1], point1[0]-point[0])
  return angle * (180/Math.PI);
@@ -6238,5 +6237,4 @@ L.control.layers(baseMaps, {
   '10 трамвай направление 1': layersgrope9
   
 }).addTo(map)
-
 
