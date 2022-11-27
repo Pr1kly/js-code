@@ -1,3 +1,18 @@
+const delay = ms => {
+  return new Promise(r => setTimeout(() => r(), ms))
+}
+const url = 'https://testapi.igis-transport.ru/smoothly-aJeq3WVg1PyRIA0A/data/route'
+async function fetchTodos_19(){
+  console.log("Started....")
+  await delay(0)
+  const response = await fetch(url)
+  const data = await response.json()
+  var bar = data["data"]
+  const res = bar["19"]
+  return res
+ }
+//fetchTodos_19()
+//console.log(data)
 function setGroup(arrSubroute, arrStage, obj ){
   var group = [];
   for(i = 0; i < obj.arrayOfStop.length-1; i++){
@@ -20,19 +35,19 @@ function alfa(point, point1, angle1){
  var angle = Math.atan2(point1[1]-point[1], point1[0]-point[0])
  return angle * (180/Math.PI);
 }
-function Marsh_19_0(){
+async function Marsh_19_0(){
+  //Маршрут полный
+  var assetLayerGroup = new L.layerGroup()
+  console.log(assetLayerGroup)
+  assetLayerGroup.clearLayers()
+  console.log(assetLayerGroup)
   var temp = groupPolyline[0][0][0]
-var marshrut = groupPolyline[0]
-//console.log(marshrut)
-var m = L.marker([temp[0],temp[1]], {
-  icon: new L.icon({
-    iconUrl: "ico.png",
-    iconSize: [40,40],
-    iconAnchor: [20,20]
-  })  
-}).addTo(map)
-var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
+  var marshrut = groupPolyline[0]
+  var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
+  var layersgrope1 = L.layerGroup([poliline19_1]).addTo(map)
   var marsh = []
+  var mas = []
+  console.log(mas)
   let p = 0
   for(i = 0; i < marshrut.length; i++){
     for(k = 0; k < marshrut[i].length; k++){
@@ -42,30 +57,40 @@ var layersgrope0 = L.layerGroup([poliline19_0]).addTo(map)
       }
     }
   }
-  var drivePath= marsh.slice(1)
-  console.log(drivePath)
+  //список всех ТС на 19 маршруте
+  var result = await fetchTodos_19()
+  //console.log(result)
+  for(i = 0; i < result.length; i++){
+    var temp = result[i]
+    var title1 = temp.code
+    // Создание маркеров для всех ТС на линии
+   
+    var m = L.marker(L.latLng(temp.latitude, temp.longitude), {
+      icon: new L.icon({
+        iconUrl: "ico.png",
+        iconSize: [40,40],
+        iconAnchor: [20,20]
+      }), title: title1
+    })
+  assetLayerGroup.addLayer(m)
+  assetLayerGroup.addTo(map)
+  }
   function simulate() {
+
     var duration= 3000;
-   // m.setRotationAngle(alfa(point, point1))
-    if(!drivePath.length) {
-      drivePath= marsh.slice(1);
-      duration= 0;
-    }
-    point = drivePath.shift()
-    point1 = drivePath[1]
-    console.log(drivePath)
+   
+    point = result.stop_previous
+    point1 = result.stop_next
+    
     m.slideTo([point[0], point[1]], {
         duration: duration,
         rotationAngle: alfa(point, point1)
     })
-    //var angle1 = alfa(point, point1)
-    //console.log(alfa(point, point1))
-   // console.log(drivePath)
-    setTimeout(simulate, 2500);
     
+    setTimeout(simulate, 2500);
   }
-  //var point = drivePath.shift();
-  simulate();
+  
+  setTimeout(Marsh_19_0, 10000)
 }
 function Marsh_19_1(){
 var temp = groupPolyline[1][0][0]
@@ -6238,3 +6263,4 @@ L.control.layers(baseMaps, {
   
 }).addTo(map)
 
+fetchTodos()
